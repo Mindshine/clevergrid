@@ -2,40 +2,34 @@ package com.mindshine.clevergrid.model;
 
 import java.io.Serializable;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
-
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
  * The persistent class for the qna database table.
- * 
+ *
  */
-@Entity
-@Table(name="qna")
-@NamedQuery(name="QuestionAndAnswer.findAll", query="SELECT q FROM QuestionAndAnswer q")
+// @Entity
+// @Table(name="qna")
+// @NamedQuery(name="QuestionAndAnswer.findAll", query="SELECT q FROM
+// QuestionAndAnswer q")
+@Document
 public class QuestionAndAnswer implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	// @GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 
-	@Lob
+	// @Lob
 	private String answer;
 
-	@Lob
+	// @Lob
 	private String question;
 
-	//bi-directional many-to-one association to Topic
-	@ManyToOne
-	@JoinColumn(name="idtopic")
+	// bi-directional many-to-one association to Topic
+	// @ManyToOne
+	// @JoinColumn(name="idtopic")
 	private Topic topic;
 
 	public QuestionAndAnswer() {
@@ -74,20 +68,20 @@ public class QuestionAndAnswer implements Serializable {
 	}
 
 	public static Builder getBuilder(String question, String answer) {
-        return new Builder(question, answer);
-    }
-    
-    public static class Builder {
-        QuestionAndAnswer built;
- 
-        Builder(String question, String answer) {
-            built = new QuestionAndAnswer();
-            built.question = question;
-            built.answer = answer;
-        }
- 
-        public QuestionAndAnswer build() {
-            return built;
-        }
-    }
+		return new Builder(question, answer);
+	}
+
+	public static class Builder {
+		QuestionAndAnswer built;
+
+		Builder(String question, String answer) {
+			this.built = new QuestionAndAnswer();
+			this.built.question = question;
+			this.built.answer = answer;
+		}
+
+		public QuestionAndAnswer build() {
+			return this.built;
+		}
+	}
 }

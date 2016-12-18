@@ -3,41 +3,33 @@ package com.mindshine.clevergrid.model;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
  * The persistent class for the topic database table.
- * 
+ *
  */
-@Entity
-@Table(name="topic")
-@NamedQuery(name="Topic.findAll", query="SELECT t FROM Topic t")
+// @Entity
+// @Table(name="topic")
+// @NamedQuery(name="Topic.findAll", query="SELECT t FROM Topic t")
+@Document
 public class Topic implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	// @GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 
 	private String title;
 
-	//bi-directional many-to-one association to QuestionAndAnswer
-	@OneToMany(mappedBy="topic", cascade = CascadeType.REMOVE)
+	// bi-directional many-to-one association to QuestionAndAnswer
+	// @OneToMany(mappedBy="topic", cascade = CascadeType.REMOVE)
 	private List<QuestionAndAnswer> qnas;
 
-	//bi-directional many-to-one association to Game
-	@ManyToOne
-	@JoinColumn(name="idgame")
+	// bi-directional many-to-one association to Game
+	// @ManyToOne
+	// @JoinColumn(name="idgame")
 	private Game game;
 
 	public Topic() {
@@ -90,19 +82,19 @@ public class Topic implements Serializable {
 	}
 
 	public static Builder getBuilder(String title) {
-        return new Builder(title);
-    }
-    
-    public static class Builder {
-        Topic built;
- 
-        Builder(String title) {
-            built = new Topic();
-            built.title = title;
-        }
- 
-        public Topic build() {
-            return built;
-        }
-    }
+		return new Builder(title);
+	}
+
+	public static class Builder {
+		Topic built;
+
+		Builder(String title) {
+			this.built = new Topic();
+			this.built.title = title;
+		}
+
+		public Topic build() {
+			return this.built;
+		}
+	}
 }

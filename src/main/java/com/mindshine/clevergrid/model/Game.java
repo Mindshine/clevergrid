@@ -6,25 +6,12 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EntityListeners;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
@@ -33,53 +20,55 @@ import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
  * The persistent class for the game database table.
  *
  */
-@Entity
-@EntityListeners(AuditingEntityListener.class)
-@Table(name = "game")
+// @Entity
+// @EntityListeners(AuditingEntityListener.class)
+// @Table(name = "game")
+@Document
 public class Game implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	// @GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 
 	private String title;
 
-	@Column(name = "created_date")
+	// @Column(name = "created_date")
 	@CreatedDate
 	@JsonSerialize(using = LocalDateTimeSerializer.class)
 	private LocalDateTime createdDate = LocalDateTime.now();
 
-	@Column(name = "created_by")
+	// @Column(name = "created_by")
 	@CreatedBy
 	private String createdBy;
 
-	@Column(name = "last_modified_date")
+	// @Column(name = "last_modified_date")
 	@LastModifiedDate
 	@JsonSerialize(using = LocalDateTimeSerializer.class)
 	private LocalDateTime lastModifiedDate;
 
-	@Column(name = "last_modified_by")
+	// @Column(name = "last_modified_by")
 	@LastModifiedBy
 	private String latsModifiedBy;
 
-	@Column(name = "is_public")
+	// @Column(name = "is_public")
 	private boolean isPublic;
 
 	// bi-directional many-to-one association to Topic
-	@OneToMany(mappedBy = "game", cascade = CascadeType.REMOVE)
+	// @OneToMany(mappedBy = "game", cascade = CascadeType.REMOVE)
 	private List<Topic> topics;
 
-	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
-	@JoinTable(name = "game_tags", joinColumns = { @JoinColumn(name = "idgame") }, inverseJoinColumns = {
-			@JoinColumn(name = "idtag") })
-	private Set<Tag> tags = new HashSet<Tag>();
+	// @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	// @JoinTable(name = "game_tags", joinColumns = { @JoinColumn(name =
+	// "idgame") }, inverseJoinColumns = {
+	// @JoinColumn(name = "idtag") })
+	private Set<Tag> tags = new HashSet<>();
 
 	public Game() {
 	}
 
 	public int getId() {
-		return id;
+		return this.id;
 	}
 
 	protected void setId(int id) {
@@ -87,7 +76,7 @@ public class Game implements Serializable {
 	}
 
 	public String getTitle() {
-		return title;
+		return this.title;
 	}
 
 	public void setTitle(String title) {
@@ -95,7 +84,7 @@ public class Game implements Serializable {
 	}
 
 	public LocalDateTime getCreatedDate() {
-		return createdDate;
+		return this.createdDate;
 	}
 
 	public void setCreatedDate(LocalDateTime createdDate) {
@@ -103,7 +92,7 @@ public class Game implements Serializable {
 	}
 
 	public String getCreatedBy() {
-		return createdBy;
+		return this.createdBy;
 	}
 
 	public void setCreatedBy(String createdBy) {
@@ -111,7 +100,7 @@ public class Game implements Serializable {
 	}
 
 	public LocalDateTime getLastModifiedDate() {
-		return lastModifiedDate;
+		return this.lastModifiedDate;
 	}
 
 	public void setLastModifiedDate(LocalDateTime lastModifiedDate) {
@@ -119,7 +108,7 @@ public class Game implements Serializable {
 	}
 
 	public String getLatsModifiedBy() {
-		return latsModifiedBy;
+		return this.latsModifiedBy;
 	}
 
 	public void setLatsModifiedBy(String latsModifiedBy) {
@@ -127,7 +116,7 @@ public class Game implements Serializable {
 	}
 
 	public boolean isPublic() {
-		return isPublic;
+		return this.isPublic;
 	}
 
 	public void setPublic(boolean isPublic) {
@@ -135,7 +124,7 @@ public class Game implements Serializable {
 	}
 
 	public List<Topic> getTopics() {
-		return topics;
+		return this.topics;
 	}
 
 	public void setTopics(List<Topic> topics) {
@@ -157,7 +146,7 @@ public class Game implements Serializable {
 	}
 
 	public Set<Tag> getTags() {
-		return tags;
+		return this.tags;
 	}
 
 	public void setTags(Set<Tag> tags) {
@@ -186,12 +175,13 @@ public class Game implements Serializable {
 		Game built;
 
 		Builder(String title) {
-			built = new Game();
-			built.title = title;
+			this.built = new Game();
+			this.built.title = title;
 		}
 
 		public Game build() {
-			return built;
+
+			return this.built;
 		}
 	}
 
