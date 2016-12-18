@@ -1,0 +1,52 @@
+	<div class="row">
+		<div class="col-sm-3 col-md-2 sidebar">
+			<ul class="nav nav-sidebar">
+				<li><a href="#/createnewgame">Create New Game</a></li>
+			</ul>
+			<ul class="nav nav-sidebar">
+				<li><a href="#/taglist">Tags</a></li>
+			</ul>
+			<ul class="nav nav-sidebar">
+				<li ng-repeat="tag in tags"><a href="#/taglist" ng-click="selectTag(tag.tagName)">{{tag.tagName}}</a></li>
+			</ul>
+		</div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+			<h1 class="page-header">Tags</h1>
+			<div>{{selectedTagName}}</div>
+			<h2><a class="label label-{{selectedTagName == tag.tagName ? 'primary' : 'info'}}" ng-repeat="tag in tags" ng-click="selectTag(tag.tagName)">{{tag.tagName}}</a></h2>
+			<div class="row">
+                <div class="col-lg-3 col-md-6" ng-repeat="game in tagGames">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <div class="row">
+                            	<a data-toggle="tooltip" title="Play" ng-click="playGame(game._links.self.href)">
+	                                <div class="col-xs-3">
+	                                    <i class="fa fa-play-circle fa-5x"></i>
+	                                </div>
+	                            </a>
+                                <div class="col-xs-7 text-right">
+                                    <div class="huge">{{game.title}}</div>
+                                </div>
+                                <a ng-click="removeGame(game._links.self.href)" data-toggle="tooltip" title="Remove game" class="removegame pull-right">
+	                                <div class="col-xs-1">
+                                		<i class="fa fa-times"></i>
+	                                </div>
+                                </a>
+                                <hr/>
+                       			<div class="tags">
+									<a ng-repeat="tag in tagsByGameUri[game._links.self.href]" ng-click="selectTag(tag.tagName)" class="label label-info">{{tag.tagName}}</a>
+								</div>
+                            </div>
+                        </div>
+                        <a ng-click="editGame(game._links.self.href)">
+                            <div class="panel-footer">
+                                <span class="pull-left">View Details</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+		</div>
+	</div>
