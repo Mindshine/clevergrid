@@ -3,7 +3,9 @@ package com.mindshine.clevergrid.model;
 import java.io.Serializable;
 import java.util.List;
 
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
@@ -19,27 +21,29 @@ public class Topic implements Serializable {
 
 	@Id
 	// @GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
+	private ObjectId id;
 
 	private String title;
 
 	// bi-directional many-to-one association to QuestionAndAnswer
 	// @OneToMany(mappedBy="topic", cascade = CascadeType.REMOVE)
+	@DBRef
 	private List<QuestionAndAnswer> qnas;
 
 	// bi-directional many-to-one association to Game
 	// @ManyToOne
 	// @JoinColumn(name="idgame")
+	@DBRef
 	private Game game;
 
 	public Topic() {
 	}
 
-	public int getId() {
+	public ObjectId getId() {
 		return this.id;
 	}
 
-	protected void setId(int id) {
+	public void setId(ObjectId id) {
 		this.id = id;
 	}
 

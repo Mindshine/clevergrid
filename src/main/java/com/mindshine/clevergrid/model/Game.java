@@ -6,11 +6,13 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -29,7 +31,7 @@ public class Game implements Serializable {
 
 	@Id
 	// @GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	private ObjectId id;
 
 	private String title;
 
@@ -56,22 +58,24 @@ public class Game implements Serializable {
 
 	// bi-directional many-to-one association to Topic
 	// @OneToMany(mappedBy = "game", cascade = CascadeType.REMOVE)
+	@DBRef
 	private List<Topic> topics;
 
 	// @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
 	// @JoinTable(name = "game_tags", joinColumns = { @JoinColumn(name =
 	// "idgame") }, inverseJoinColumns = {
 	// @JoinColumn(name = "idtag") })
+	@DBRef
 	private Set<Tag> tags = new HashSet<>();
 
 	public Game() {
 	}
 
-	public int getId() {
+	public ObjectId getId() {
 		return this.id;
 	}
 
-	protected void setId(int id) {
+	public void setId(ObjectId id) {
 		this.id = id;
 	}
 

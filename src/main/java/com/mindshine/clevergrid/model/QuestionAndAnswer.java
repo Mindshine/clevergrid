@@ -2,7 +2,9 @@ package com.mindshine.clevergrid.model;
 
 import java.io.Serializable;
 
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
@@ -19,7 +21,7 @@ public class QuestionAndAnswer implements Serializable {
 
 	@Id
 	// @GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
+	private ObjectId id;
 
 	// @Lob
 	private String answer;
@@ -30,16 +32,17 @@ public class QuestionAndAnswer implements Serializable {
 	// bi-directional many-to-one association to Topic
 	// @ManyToOne
 	// @JoinColumn(name="idtopic")
+	@DBRef
 	private Topic topic;
 
 	public QuestionAndAnswer() {
 	}
 
-	public int getId() {
+	public ObjectId getId() {
 		return this.id;
 	}
 
-	protected void setId(int id) {
+	public void setId(ObjectId id) {
 		this.id = id;
 	}
 

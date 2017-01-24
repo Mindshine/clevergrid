@@ -1,2 +1,0 @@
-# clevergrid
-CleverGrid game

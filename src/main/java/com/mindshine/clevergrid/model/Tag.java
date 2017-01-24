@@ -7,8 +7,10 @@ import java.util.Set;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.bson.types.ObjectId;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
@@ -24,7 +26,7 @@ public class Tag implements Serializable {
 
 	@Id
 	// @GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
+	private ObjectId id;
 
 	@NotNull
 	@NotEmpty
@@ -33,16 +35,17 @@ public class Tag implements Serializable {
 	private String tagName;
 
 	// @ManyToMany(fetch = FetchType.LAZY, mappedBy="tags")
+	@DBRef
 	private Set<Game> games = new HashSet<>();
 
 	public Tag() {
 	}
 
-	public int getId() {
+	public ObjectId getId() {
 		return this.id;
 	}
 
-	public void setId(int id) {
+	public void setId(ObjectId id) {
 		this.id = id;
 	}
 

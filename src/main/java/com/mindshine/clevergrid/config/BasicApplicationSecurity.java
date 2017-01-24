@@ -23,7 +23,11 @@ public class BasicApplicationSecurity extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 		LOG.debug("Configuring form-based authentication");
         http
-                .authorizeRequests().anyRequest().authenticated()
+                .authorizeRequests()
+                .antMatchers("/webjars/**").permitAll()
+                .antMatchers("/js/**").permitAll()
+                .antMatchers("/css/**").permitAll()
+                .anyRequest().authenticated()
                 .and()
                 .formLogin().failureUrl("/login?error")
                 .defaultSuccessUrl("/")
