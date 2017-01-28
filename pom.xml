@@ -3,8 +3,8 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.mindshine</groupId>
 	<artifactId>clevergrid</artifactId>
-	<version>0.0.2-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
 	<name>CleverGrid</name>
 	<description>CleverGrid game</description>
 
@@ -28,151 +28,85 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>1.4.3.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 
-	<dependencies>
+	<modules>
+		<module>clevergrid-webapp</module>
+		<module>clevergrid-ui</module>
+	</modules>
+	
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>com.mindshine</groupId>
+				<artifactId>clevergrid-ui</artifactId>
+				<version>${project.version}</version>
+			</dependency>
 
-		<!-- Spring Web -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-thymeleaf</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.thymeleaf.extras</groupId>
-			<artifactId>thymeleaf-extras-springsecurity4</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-			<exclusions>
-				<exclusion>
-					<groupId>org.springframework.boot</groupId>
-					<artifactId>spring-boot-starter-tomcat</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-jetty</artifactId>
-		</dependency>
+			<!-- Mongo DB -->
+			<dependency>
+				<groupId>org.mongodb</groupId>
+				<artifactId>mongodb-driver-core</artifactId>
+				<version>${mongodb.driver.version}</version>
+			</dependency>
 
-		<!-- Spring Data -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-mongodb</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-rest</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.fasterxml.jackson.datatype</groupId>
-			<artifactId>jackson-datatype-jsr310</artifactId>
-		</dependency>
+			<!-- Webjars CSS/JS -->
+			<dependency>
+				<groupId>org.webjars</groupId>
+				<artifactId>angularjs</artifactId>
+				<version>${angularjs.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.webjars</groupId>
+				<artifactId>jquery</artifactId>
+				<version>${jquery.version}</version>
+			</dependency>
 
-		<!-- Spring Security -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-ldap</artifactId>
-		</dependency>
+			<dependency>
+				<groupId>org.webjars</groupId>
+				<artifactId>bootstrap</artifactId>
+				<version>${bootstrap.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.webjars</groupId>
+				<artifactId>angular-ui-bootstrap</artifactId>
+				<version>${angular-ui-bootstrap.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.webjars</groupId>
+				<artifactId>font-awesome</artifactId>
+				<version>${font-awesome.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.webjars</groupId>
+				<artifactId>angular-xeditable</artifactId>
+				<version>${angular-xeditable.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.webjars</groupId>
+				<artifactId>angular-bootstrap-colorpicker</artifactId>
+				<version>${angular-bootstrap-colorpicker.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.webjars.bower</groupId>
+				<artifactId>angular-wysiwyg</artifactId>
+				<version>${angular-wysiwyg.version}</version>
+			</dependency>
 
-		<!-- Spring DevTools -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-devtools</artifactId>
-		</dependency>
-
-		<!-- Spring Test -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<scope>test</scope>
-		</dependency>
-
-		<!-- Servlet API -->
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
-			<scope>provided</scope>
-		</dependency>
-
-		<!-- Mongo DB -->
-		<dependency>
-		    <groupId>org.mongodb</groupId>
-		    <artifactId>mongodb-driver-core</artifactId>
-		    <version>${mongodb.driver.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>xml-apis</groupId>
-			<artifactId>xml-apis</artifactId>
-		</dependency>
-
-		<!-- Webjars CSS/JS -->
-		<dependency>
-			<groupId>org.webjars</groupId>
-			<artifactId>angularjs</artifactId>
-			<version>${angularjs.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.webjars</groupId>
-			<artifactId>jquery</artifactId>
-			<version>${jquery.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.webjars</groupId>
-			<artifactId>bootstrap</artifactId>
-			<version>${bootstrap.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.webjars</groupId>
-			<artifactId>angular-ui-bootstrap</artifactId>
-			<version>${angular-ui-bootstrap.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.webjars</groupId>
-			<artifactId>font-awesome</artifactId>
-			<version>${font-awesome.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.webjars</groupId>
-			<artifactId>angular-xeditable</artifactId>
-			<version>${angular-xeditable.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.webjars</groupId>
-			<artifactId>angular-bootstrap-colorpicker</artifactId>
-			<version>${angular-bootstrap-colorpicker.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.webjars.bower</groupId>
-			<artifactId>angular-wysiwyg</artifactId>
-			<version>${angular-wysiwyg.version}</version>
-		</dependency>
-
-		<!-- Apache Commons -->
-		<dependency>
-		    <groupId>org.apache.commons</groupId>
-		    <artifactId>commons-collections4</artifactId>
-		    <version>4.1</version>
-		</dependency>
-		<dependency>
-		    <groupId>org.apache.commons</groupId>
-		    <artifactId>commons-lang3</artifactId>
-		    <version>3.5</version>
-		</dependency>
-		
-	</dependencies>
+			<!-- Apache Commons -->
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-collections4</artifactId>
+				<version>4.1</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-lang3</artifactId>
+				<version>3.5</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
 	<repositories>
 		<repository>
@@ -184,38 +118,5 @@
 			</snapshots>
 		</repository>
 	</repositories>
-
-	<build>
-		<resources>
-			<resource>
-				<directory>${basedir}/src/main/resources</directory>
-				<includes>
-					<include>messages.properties</include>
-				</includes>
-				<filtering>true</filtering>
-			</resource>
-			<resource>
-				<directory>${basedir}/src/main/resources</directory>
-				<excludes>
-					<exclude>messages.properties</exclude>
-				</excludes>
-				<filtering>false</filtering>
-			</resource>
-		</resources>
-		<pluginManagement>
-			<plugins>
-				<plugin>
-					<artifactId>maven-release-plugin</artifactId>
-					<version>2.5.3</version>
-				</plugin>
-			</plugins>
-		</pluginManagement>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
 
 </project>

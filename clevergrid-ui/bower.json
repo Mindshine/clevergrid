@@ -1,0 +1,26 @@
+{
+  "name": "clevergrid-ui",
+  "version": "0.0.1",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "angular": "~1.6.1",
+    "angular-route": "~1.6.1",
+    "angular-mocks": "~1.6.1",
+    "angular-messages": "~1.6.1",
+    "angular-bootstrap": "~2.4.0",
+    "angular-xeditable": "~0.6.0",
+    "angular-bootstrap-colorpicker": "latest",
+    "angular-wysiwyg": "~1.2.4",
+    "requirejs": "latest",
+    "bootstrap": "latest"
+  },
+  "resolutions": {
+    "angular": "~1.6.1"
+  }
+}

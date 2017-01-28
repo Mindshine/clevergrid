@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title layout:title-pattern="$DECORATOR_TITLE">Clever Grid</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<link th:href="@{'/webjars/bootstrap/' + #{bootstrap.version} + '/css/bootstrap.min.css'}" rel="stylesheet" />
+<link th:href="@{'/webjars/bootstrap/' + #{bootstrap.version} + '/css/bootstrap-theme.min.css'}" rel="stylesheet" />
+<link th:href="@{'/webjars/font-awesome/' + #{font-awesome.version} + '/css/font-awesome.min.css'}" rel="stylesheet" />
+<link th:href="@{'/webjars/angular-xeditable/' + #{angular-xeditable.version} + '/css/xeditable.css'}" rel="stylesheet"></link>
+<link th:href="@{'/webjars/angular-bootstrap-colorpicker/' + #{angular-bootstrap-colorpicker.version} + '/css/colorpicker.min.css'}" rel="stylesheet"></link>
+<link th:href="@{/css/general.css}" rel="stylesheet" ></link>
+<!--[if lt IE 9]>
+	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+	<script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+<!  [endif]-->
+</head>
+<body ng-app="gameManagerApp">
+	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Clever Grid</a>
+        </div>
+        <div class="navbar-collapse collapse" sec:authorize="isAuthenticated()">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#/dashboard">Dashboard</a></li>
+            <li><a href="#/settings">Settings</a></li>
+            <li><a href="#/profile">Profile</a></li>
+            <li><a href="#/help">Help</a></li>
+			<li><a href="#" logout-link="" th:text="#{btn.logout}">Logout</a>
+				<form class="hidden" id="logout" method="post"
+							th:action="@{/logout}"></form></li>
+		  </ul>
+          <form class="navbar-form navbar-right" ng-controller="searchBarController" sec:authorize="isAuthenticated()">
+            <input type="text" class="form-control" ng-model="search" ng-paste="paste($event.originalEvent)" placeholder="Search..."/>
+          </form>
+        </div>
+      </div>
+    </div>
+
+	<div class="container-fluid" layout:fragment="content"></div>
+
+	<script th:src="@{'/webjars/jquery/' + #{jquery.version} + '/dist/jquery.min.js'}"></script>
+	<script th:src="@{'/webjars/angularjs/' + #{angularjs.version} + '/angular.js'}"></script>
+	<script th:src="@{'/webjars/bootstrap/' + #{bootstrap.version} + '/js/bootstrap.min.js'}"></script>
+	<script th:src="@{'/webjars/angularjs/' + #{angularjs.version} + '/angular-route.js'}"></script>
+	<script th:src="@{'/webjars/angularjs/' + #{angularjs.version} + '/angular-messages.js'}"></script>
+	<script th:src="@{'/webjars/angularjs/' + #{angularjs.version} + '/i18n/angular-locale_' + ${#strings.toLowerCase(#locale.language)} + '.js'}"></script>
+	<script th:if="${!#strings.isEmpty(#locale.country)}" th:src="@{'/webjars/angularjs/' + #{angularjs.version} + '/i18n/angular-locale_' + ${#strings.toLowerCase(#locale.language + '-' + #locale.country)} + '.js'}"></script>
+	<script th:src="@{'/webjars/angular-ui-bootstrap/' + #{angular-ui-bootstrap.version} + '/ui-bootstrap-tpls.js'}"></script>
+	<script th:src="@{'/webjars/angular-xeditable/' + #{angular-xeditable.version} + '/js/xeditable.min.js'}"></script>
+	<script th:src="@{'/webjars/angular-bootstrap-colorpicker/' + #{angular-bootstrap-colorpicker.version} + '/js/bootstrap-colorpicker-module.min.js'}"></script>    
+	<script th:src="@{'/webjars/angular-wysiwyg/' + #{angular-wysiwyg.version} + '/dist/angular-wysiwyg.min.js'}"></script>    
+	<script th:src="@{/js/app.js}"></script>
+	
+</body>
+</html>
