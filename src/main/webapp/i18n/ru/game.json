@@ -1,0 +1,27 @@
+{
+    "clevergridApp": {
+        "game" : {
+            "home": {
+                "title": "Games",
+                "createLabel": "Создать новый Game",
+                "createOrEditLabel": "Создать или отредактировать Game",
+                "search": "Найти Game"
+            },
+            "created": "Новый Game создан с идентификатором {{ param }}",
+            "updated": "Game обновлен с идентификатором {{ param }}",
+            "deleted": "Game удален с идентификатором {{ param }}",
+            "delete": {
+                "question": "Вы уверены что хотите удалить Game {{ id }}?"
+            },
+            "detail": {
+                "title": "Game"
+            },
+            "title": "Title",
+            "createdDate": "Created Date",
+            "createdBy": "Created By",
+            "lastModifiedDate": "Last Modified Date",
+            "lastModifiedBy": "Last Modified By",
+            "isPublic": "Is Public"
+        }
+    }
+}

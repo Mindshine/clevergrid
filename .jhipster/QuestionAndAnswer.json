@@ -1,0 +1,20 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "question",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "answer",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170129091442",
+    "entityTableName": "question_and_answer",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "angularJSSuffix": "cg"
+}

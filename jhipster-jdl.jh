@@ -1,0 +1,28 @@
+entity Game {
+    title String,
+    createdDate ZonedDateTime,
+    createdBy String,
+    lastModifiedDate ZonedDateTime,
+    lastModifiedBy String,
+    isPublic Boolean
+}
+
+entity Topic {
+    title String,
+}
+
+entity QuestionAndAnswer {
+    question String,
+    answer String,
+}
+
+entity Tag {
+    tagName String
+}
+
+dto * with mapstruct
+
+// Set service options
+service all with serviceImpl
+// Set an angular suffix
+angularSuffix * with cg

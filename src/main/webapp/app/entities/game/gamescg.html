@@ -1,0 +1,66 @@
+<div>
+    <h2 data-translate="clevergridApp.game.home.title">Games</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="gamecg.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  data-translate="clevergridApp.game.home.createLabel">
+                        Create new Game
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th><span data-translate="global.field.id">ID</span></th>
+                    <th><span data-translate="clevergridApp.game.title">Title</span></th>
+                    <th><span data-translate="clevergridApp.game.createdDate">Created Date</span></th>
+                    <th><span data-translate="clevergridApp.game.createdBy">Created By</span></th>
+                    <th><span data-translate="clevergridApp.game.lastModifiedDate">Last Modified Date</span></th>
+                    <th><span data-translate="clevergridApp.game.lastModifiedBy">Last Modified By</span></th>
+                    <th><span data-translate="clevergridApp.game.isPublic">Is Public</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="game in vm.games track by game.id">
+                    <td><a ui-sref="gamecg-detail({id:game.id})">{{game.id}}</a></td>
+                    <td>{{game.title}}</td>
+                    <td>{{game.createdDate | date:'medium'}}</td>
+                    <td>{{game.createdBy}}</td>
+                    <td>{{game.lastModifiedDate | date:'medium'}}</td>
+                    <td>{{game.lastModifiedBy}}</td>
+                    <td>{{game.isPublic}}</td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="gamecg-detail({id:game.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="gamecg.edit({id:game.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="gamecg.delete({id:game.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

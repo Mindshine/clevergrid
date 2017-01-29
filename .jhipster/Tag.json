@@ -1,0 +1,16 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "tagName",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170129091443",
+    "entityTableName": "tag",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "angularJSSuffix": "cg"
+}

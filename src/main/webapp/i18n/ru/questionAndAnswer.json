@@ -1,0 +1,23 @@
+{
+    "clevergridApp": {
+        "questionAndAnswer" : {
+            "home": {
+                "title": "Question And Answers",
+                "createLabel": "Создать новый Question And Answer",
+                "createOrEditLabel": "Создать или отредактировать Question And Answer",
+                "search": "Найти Question And Answer"
+            },
+            "created": "Новый Question And Answer создан с идентификатором {{ param }}",
+            "updated": "Question And Answer обновлен с идентификатором {{ param }}",
+            "deleted": "Question And Answer удален с идентификатором {{ param }}",
+            "delete": {
+                "question": "Вы уверены что хотите удалить Question And Answer {{ id }}?"
+            },
+            "detail": {
+                "title": "Question And Answer"
+            },
+            "question": "Question",
+            "answer": "Answer"
+        }
+    }
+}

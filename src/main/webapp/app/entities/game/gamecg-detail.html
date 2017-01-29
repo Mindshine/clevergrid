@@ -1,0 +1,43 @@
+
+<div>
+    <h2><span data-translate="clevergridApp.game.detail.title">Game</span> {{vm.game.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="clevergridApp.game.title">Title</span></dt>
+        <dd>
+            <span>{{vm.game.title}}</span>
+        </dd>
+        <dt><span data-translate="clevergridApp.game.createdDate">Created Date</span></dt>
+        <dd>
+            <span>{{vm.game.createdDate | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="clevergridApp.game.createdBy">Created By</span></dt>
+        <dd>
+            <span>{{vm.game.createdBy}}</span>
+        </dd>
+        <dt><span data-translate="clevergridApp.game.lastModifiedDate">Last Modified Date</span></dt>
+        <dd>
+            <span>{{vm.game.lastModifiedDate | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="clevergridApp.game.lastModifiedBy">Last Modified By</span></dt>
+        <dd>
+            <span>{{vm.game.lastModifiedBy}}</span>
+        </dd>
+        <dt><span data-translate="clevergridApp.game.isPublic">Is Public</span></dt>
+        <dd>
+            <span>{{vm.game.isPublic}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="gamecg-detail.edit({id:vm.game.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>
