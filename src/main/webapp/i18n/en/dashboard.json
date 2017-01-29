@@ -1,0 +1,9 @@
+{
+    "clevergridApp": {
+        "game" : {
+            "home": {
+                "title": "Dashboard"
+            }
+        }
+    }
+}

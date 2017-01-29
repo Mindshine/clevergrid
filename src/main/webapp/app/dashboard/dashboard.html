@@ -1,0 +1,94 @@
+	<div class="row">
+	    <div class="col-lg-3 col-md-6">
+                  <div class="panel panel-default addgame">
+                      <div class="panel-heading">
+                         	<a href="#/createnewgame" data-toggle="tooltip" title="Add new game">
+                           <div class="row">
+                               <div class="col-xs-3">
+                                   <i class="fa fa-plus-circle fa-5x"></i>
+                               </div>
+                               <div class="col-xs-9 text-right">
+                                   <div class="huge">New Game</div>
+                               </div>
+                           </div>
+                          </a>
+                      </div>
+                      <div class="panel-footer">
+                      	<span>&nbsp;</span>
+                          <div class="clearfix"></div>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-lg-3 col-md-6" ng-show="games._links.next">
+                  <div class="panel panel-default">
+                      <div class="panel-heading">
+                         	<a ng-click="reloadGames(games._links.next.href)" data-toggle="tooltip" title="Next">
+                           <div class="row">
+                               <div class="col-xs-3">
+                                   <i class="fa fa-angle-double-left fa-5x"></i>
+                               </div>
+                               <div class="col-xs-9 text-right">
+                                   <div class="huge">Next...</div>
+                               </div>
+                           </div>
+                          </a>
+                      </div>
+                      <div class="panel-footer">
+                      	<span>&nbsp;</span>
+                          <div class="clearfix"></div>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-lg-3 col-md-6" ng-repeat="game in games | reverse">
+                  <div class="panel panel-default">
+                      <div class="panel-heading">
+                          <div class="row">
+                          	<a data-toggle="tooltip" title="Play" ng-click="playGame(game._links.self.href)">
+                               <div class="col-xs-3">
+                                   <i class="fa fa-play-circle fa-5x"></i>
+                               </div>
+                           </a>
+                              <div class="col-xs-7 text-right">
+                                  <div class="huge">{{game.title}}</div>
+                              </div>
+                              <a ng-click="removeGame(game._links.self.href)" data-toggle="tooltip" title="Remove game" class="removegame pull-right">
+                               <div class="col-xs-1">
+                              		<i class="fa fa-times"></i>
+                               </div>
+                              </a>
+                              <hr/>
+                     			<div class="tags">
+							<a ng-repeat="tag in tagsByGames[game._links.self.href]" ng-click="selectTag(tag.tagName)" class="label label-info">{{tag.tagName}}</a>
+						</div>
+                          </div>
+                      </div>
+                      <a ng-click="editGame(game._links.self.href)">
+                          <div class="panel-footer">
+                              <span class="pull-left">View Details</span>
+                              <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                              <div class="clearfix"></div>
+                          </div>
+                      </a>
+                  </div>
+              </div>
+              <div class="col-lg-3 col-md-6" ng-show="games._links.prev">
+                  <div class="panel panel-default">
+                      <div class="panel-heading">
+                         	<a ng-click="reloadGames(games._links.prev.href)" data-toggle="tooltip" title="Previos">
+                           <div class="row">
+                               <div class="col-xs-3">
+                                   <i class="fa fa-angle-double-right fa-5x"></i>
+                               </div>
+                               <div class="col-xs-9 text-right">
+                                   <div class="huge">Previous...</div>
+                               </div>
+                           </div>
+                          </a>
+                      </div>
+                      <div class="panel-footer">
+                      	<span>&nbsp;</span>
+                          <div class="clearfix"></div>
+                      </div>
+                  </div>
+              </div>
+	</div>
