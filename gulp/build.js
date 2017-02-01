@@ -15,7 +15,10 @@ var fs = require('fs'),
     revReplace = require("gulp-rev-replace"),
     plumber = require('gulp-plumber'),
     gulpIf = require('gulp-if'),
-    handleErrors = require('./handle-errors');
+    handleErrors = require('./handle-errors'),
+    filter = require('gulp-filter');
+
+const faFilter = filter(['*','!font-awesome.css'], {restore: true});
 
 var config = require('./config');
 
@@ -42,7 +45,9 @@ module.exports = function() {
         //append html templates
         .pipe(gulpIf('**/app.js', footer(templates)))
         .pipe(gulpIf('*.js', jsTask()))
+        .pipe(faFilter)
         .pipe(gulpIf('*.css', cssTask()))
+        .pipe(faFilter.restore)
         .pipe(gulpIf('*.html', htmlmin({collapseWhitespace: true})))
         .pipe(gulpIf('**/*.!(html)', rev()))
         .pipe(revReplace({manifest: manifest}))

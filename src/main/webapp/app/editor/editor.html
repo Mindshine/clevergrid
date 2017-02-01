@@ -1,0 +1,134 @@
+<div class="row">
+	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+		<h1 class="page-header">
+			<a editable-text="activeGame.title"
+				onaftersave="saveGame(activeGame._links.self.href)">{{activeGame.title}}</a>&nbsp;<a
+				ng-click="removeGame(activeGame._links.self.href)"
+				data-toggle="tooltip" title="Remove game" class="removegame"><i
+				class="fa fa-times"></i></a>
+		</h1>
+		<h4 class="tags">
+			<a ng-click="editTags = !editTags" data-toggle="tooltip"
+				title="Edit tags"><i class="fa fa-edit"></i></a> <label>Tags:</label>
+			<span ng-repeat="tag in activeGameTags"
+				ng-click="selectTag(tag.tagName)" class="label label-info">{{tag.tagName}}&nbsp;<a
+				ng-click="removeTag($index)" ng-hide="!editTags"
+				data-toggle="tooltip" title="Remove tag" class="badge"><i
+					class="fa fa-times"></i></a></span> <span class="label label-info"
+				ng-hide="!editTags"><a editable-text="newTagName"
+				onaftersave="addTag()" data-toggle="tooltip" title="Add new tag">{{newTagName
+					|| 'Add'}}</a></span>
+		</h4>
+		<div class="checkbox">
+			<label><input type="checkbox" ng-model="activeGame.public"
+				ng-change="saveGame(activeGame._links.self.href)">Is public</input></label>
+		</div>
+		<div class="row topics">
+			<div class="col-md-6 col-lg-6" ng-repeat="topic in topics">
+				<div class="panel panel-default topic">
+					<div class="panel-heading">
+						<ul class="list-inline">
+							<li>
+								<h3 class="panel-title">
+									<a editable-text="topic.title" onaftersave="saveTopic($index)">{{topic.title
+										|| 'Empty' }}</a>
+								</h3>
+							</li>
+							<li class="pull-right"><span class="badge">{{qnas[$index].length
+									|| 0}}</span> <span>&nbsp;</span> <a class="removetopic pull-right"
+								data-toggle="tooltip" title="Remove topic"
+								ng-click="removeTopic($index)"><i class="fa fa-times"></i></a></li>
+						</ul>
+					</div>
+					<div class="panel-body">
+						<div class="list-group">
+							<a data-target="#qModal" data-toggle="modal"
+								class="list-group-item" ng-repeat="qna in qnas[$index]"
+								ng-click="editQuestion($parent.$index, $index)"> <span
+								class="badge"
+								ng-click="removeQuestion($parent.$index, $index);$event.stopPropagation();"><i
+									class="fa fa-times"></i></span>
+								<p class="list-group-item-heading">
+								<h2 ng-bind-html="renderHtml(qna.question)"></h2>
+								</p>
+								<p class="list-group-item-text">
+								<h2 ng-bind-html="renderHtml(qna.answer)"></h2>
+								</p>
+								<div class="clearfix"></div>
+							</a>
+						</div>
+					</div>
+					<div class="panel-footer clearfix">
+						<a data-target="#qModal" data-toggle="modal"
+							class="btn btn-default addquestion"
+							ng-click="addQuestion($index)">Add Question</a> <a
+							data-target="#impModal" data-toggle="modal"
+							class="btn btn-default pull-right" ng-click="selectTopic($index)">Import</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6 col-lg-6" ng-hide="topics.length >= 4">
+				<div class="panel panel-default">
+					<div class="panel-body text-center">
+						<button class="btn btn-default addtopic" ng-click="addTopic()">
+							<h3>Add New Topic</h3>
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="qModal" class="modal fade" tabindex="-1" role="dialog"
+	aria-labelledby="qModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true">×</button>
+				<h3 id="qModalLabel">Edit question</h3>
+			</div>
+			<div class="modal-body">
+				<form id="qForm" method="post">
+					<label for="question">Question:</label>
+					<wysiwyg textarea-id="question" textarea-class="form-control"
+						textarea-height="250px" ng-model="question"></wysiwyg>
+					<label for="answer">Answer:</label>
+					<wysiwyg textarea-id="answer" textarea-class="form-control"
+						textarea-height="250px" ng-model="answer"></wysiwyg>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-default" data-dismiss="modal"
+					aria-hidden="true">Close</button>
+				<button class="btn btn-primary" data-dismiss="modal"
+					aria-hidden="true" ng-click="saveQuestion()">Save changes</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="impModal" class="modal fade" tabindex="-1" role="dialog"
+	aria-labelledby="impModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true">×</button>
+				<h3 id="qModalLabel">Import questions</h3>
+			</div>
+			<div class="modal-body">
+				<form id="qForm" method="post">
+					<p>Text format:</p>
+					<pre>Q:Question1<br />A:Answer1<br />Q:Question2<br />A:Answer2</pre>
+					<label for="questions">Questions:</label>
+					<textarea class="form-control" rows="15" id="questions"
+						ng-model="imported"></textarea>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+				<button class="btn btn-primary" ng-click="importQuestions()">Import</button>
+			</div>
+		</div>
+	</div>
+</div>
