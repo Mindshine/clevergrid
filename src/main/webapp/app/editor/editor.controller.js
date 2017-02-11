@@ -5,18 +5,10 @@
 
     EditorController.$inject = [ '$scope', '$state', 'Editor' ];
 
-    function EditorController($scope, $state, Editor) {
+    function EditorController($scope, $state, entity, Editor) {
         var vm = this;
 
-        vm.games = [];
+        vm.game = entity;
 
-        loadAll();
-
-        function loadAll() {
-            Editor.query(function(result) {
-                vm.games = result;
-                vm.searchQuery = null;
-            });
-        }
     }
 })();

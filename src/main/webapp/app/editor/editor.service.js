@@ -2,9 +2,9 @@
     'use strict';
     angular.module('clevergridApp').factory('Editor', Editor);
 
-    Editor.$inject = [ '$resource', 'DateUtils' ];
+    Editor.$inject = [ '$resource' ];
 
-    function Editor($resource, DateUtils) {
+    function Editor($resource) {
         var resourceUrl = 'api/games/:id';
 
         return $resource(resourceUrl, {}, {
@@ -17,8 +17,6 @@
                 transformResponse : function(data) {
                     if (data) {
                         data = angular.fromJson(data);
-                        data.createdDate = DateUtils.convertDateTimeFromServer(data.createdDate);
-                        data.lastModifiedDate = DateUtils.convertDateTimeFromServer(data.lastModifiedDate);
                     }
                     return data;
                 }
