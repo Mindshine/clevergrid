@@ -20,10 +20,6 @@
                 <tr>
                     <th><span data-translate="global.field.id">ID</span></th>
                     <th><span data-translate="clevergridApp.game.title">Title</span></th>
-                    <th><span data-translate="clevergridApp.game.createdDate">Created Date</span></th>
-                    <th><span data-translate="clevergridApp.game.createdBy">Created By</span></th>
-                    <th><span data-translate="clevergridApp.game.lastModifiedDate">Last Modified Date</span></th>
-                    <th><span data-translate="clevergridApp.game.lastModifiedBy">Last Modified By</span></th>
                     <th><span data-translate="clevergridApp.game.isPublic">Is Public</span></th>
                     <th></th>
                 </tr>
@@ -32,10 +28,6 @@
                 <tr ng-repeat="game in vm.games track by game.id">
                     <td><a ui-sref="gamecg-detail({id:game.id})">{{game.id}}</a></td>
                     <td>{{game.title}}</td>
-                    <td>{{game.createdDate | date:'medium'}}</td>
-                    <td>{{game.createdBy}}</td>
-                    <td>{{game.lastModifiedDate | date:'medium'}}</td>
-                    <td>{{game.lastModifiedBy}}</td>
                     <td>{{game.isPublic}}</td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">

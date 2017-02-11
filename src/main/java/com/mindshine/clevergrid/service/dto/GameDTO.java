@@ -1,6 +1,5 @@
 package com.mindshine.clevergrid.service.dto;
 
-import java.time.ZonedDateTime;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -10,102 +9,66 @@ import java.util.Objects;
  */
 public class GameDTO implements Serializable {
 
-    private String id;
+	private static final long serialVersionUID = 1L;
 
-    private String title;
+	private String id;
 
-    private ZonedDateTime createdDate;
+	private String title;
 
-    private String createdBy;
-
-    private ZonedDateTime lastModifiedDate;
-
-    private String lastModifiedBy;
-
-    private Boolean isPublic;
+	private Boolean isPublic;
 
 
-    public String getId() {
-        return id;
-    }
+	public String getId() {
+		return this.id;
+	}
 
-    public void setId(String id) {
-        this.id = id;
-    }
-    public String getTitle() {
-        return title;
-    }
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getTitle() {
+		return this.title;
+	}
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-    public ZonedDateTime getCreatedDate() {
-        return createdDate;
-    }
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public Boolean getIsPublic() {
+		return this.isPublic;
+	}
 
-    public void setCreatedDate(ZonedDateTime createdDate) {
-        this.createdDate = createdDate;
-    }
-    public String getCreatedBy() {
-        return createdBy;
-    }
+	public void setIsPublic(Boolean isPublic) {
+		this.isPublic = isPublic;
+	}
 
-    public void setCreatedBy(String createdBy) {
-        this.createdBy = createdBy;
-    }
-    public ZonedDateTime getLastModifiedDate() {
-        return lastModifiedDate;
-    }
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
 
-    public void setLastModifiedDate(ZonedDateTime lastModifiedDate) {
-        this.lastModifiedDate = lastModifiedDate;
-    }
-    public String getLastModifiedBy() {
-        return lastModifiedBy;
-    }
+		GameDTO gameDTO = (GameDTO) o;
 
-    public void setLastModifiedBy(String lastModifiedBy) {
-        this.lastModifiedBy = lastModifiedBy;
-    }
-    public Boolean getIsPublic() {
-        return isPublic;
-    }
+		if ( ! Objects.equals(this.id, gameDTO.id)) {
+			return false;
+		}
 
-    public void setIsPublic(Boolean isPublic) {
-        this.isPublic = isPublic;
-    }
+		return true;
+	}
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
+	@Override
+	public int hashCode() {
+		return Objects.hashCode(this.id);
+	}
 
-        GameDTO gameDTO = (GameDTO) o;
-
-        if ( ! Objects.equals(id, gameDTO.id)) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
-    }
-
-    @Override
-    public String toString() {
-        return "GameDTO{" +
-            "id=" + id +
-            ", title='" + title + "'" +
-            ", createdDate='" + createdDate + "'" +
-            ", createdBy='" + createdBy + "'" +
-            ", lastModifiedDate='" + lastModifiedDate + "'" +
-            ", lastModifiedBy='" + lastModifiedBy + "'" +
-            ", isPublic='" + isPublic + "'" +
-            '}';
-    }
+	@Override
+	public String toString() {
+		return "GameDTO{" +
+				"id=" + this.id +
+				", title='" + this.title + "'" +
+				", isPublic='" + this.isPublic + "'" +
+				'}';
+	}
 }

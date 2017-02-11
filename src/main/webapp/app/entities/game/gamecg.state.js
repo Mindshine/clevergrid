@@ -105,10 +105,6 @@
                         entity: function () {
                             return {
                                 title: null,
-                                createdDate: null,
-                                createdBy: null,
-                                lastModifiedDate: null,
-                                lastModifiedBy: null,
                                 isPublic: null,
                                 id: null
                             };

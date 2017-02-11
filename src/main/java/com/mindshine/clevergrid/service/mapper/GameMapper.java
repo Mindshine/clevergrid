@@ -1,10 +1,12 @@
 package com.mindshine.clevergrid.service.mapper;
 
-import com.mindshine.clevergrid.domain.*;
-import com.mindshine.clevergrid.service.dto.GameDTO;
-
-import org.mapstruct.*;
 import java.util.List;
+
+import org.mapstruct.Mapper;
+import org.mapstruct.MappingTarget;
+
+import com.mindshine.clevergrid.domain.Game;
+import com.mindshine.clevergrid.service.dto.GameDTO;
 
 /**
  * Mapper for the entity Game and its DTO GameDTO.
@@ -12,11 +14,13 @@ import java.util.List;
 @Mapper(componentModel = "spring", uses = {})
 public interface GameMapper {
 
-    GameDTO gameToGameDTO(Game game);
+	GameDTO gameToGameDTO(Game game);
 
-    List<GameDTO> gamesToGameDTOs(List<Game> games);
+	List<GameDTO> gamesToGameDTOs(List<Game> games);
 
-    Game gameDTOToGame(GameDTO gameDTO);
+	Game gameDTOToGame(GameDTO gameDTO);
 
-    List<Game> gameDTOsToGames(List<GameDTO> gameDTOs);
+	List<Game> gameDTOsToGames(List<GameDTO> gameDTOs);
+
+	void updateGameFromDto(GameDTO gameDTO, @MappingTarget Game game);
 }

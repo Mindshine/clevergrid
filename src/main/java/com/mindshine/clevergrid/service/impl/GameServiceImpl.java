@@ -1,18 +1,20 @@
 package com.mindshine.clevergrid.service.impl;
 
-import com.mindshine.clevergrid.service.GameService;
-import com.mindshine.clevergrid.domain.Game;
-import com.mindshine.clevergrid.repository.GameRepository;
-import com.mindshine.clevergrid.service.dto.GameDTO;
-import com.mindshine.clevergrid.service.mapper.GameMapper;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import javax.inject.Inject;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import javax.inject.Inject;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.stream.Collectors;
+import com.mindshine.clevergrid.domain.Game;
+import com.mindshine.clevergrid.repository.GameRepository;
+import com.mindshine.clevergrid.service.GameService;
+import com.mindshine.clevergrid.service.dto.GameDTO;
+import com.mindshine.clevergrid.service.mapper.GameMapper;
 
 /**
  * Service Implementation for managing Game.
@@ -20,62 +22,69 @@ import java.util.stream.Collectors;
 @Service
 public class GameServiceImpl implements GameService{
 
-    private final Logger log = LoggerFactory.getLogger(GameServiceImpl.class);
-    
-    @Inject
-    private GameRepository gameRepository;
+	private final Logger log = LoggerFactory.getLogger(GameServiceImpl.class);
 
-    @Inject
-    private GameMapper gameMapper;
+	@Inject
+	private GameRepository gameRepository;
 
-    /**
-     * Save a game.
-     *
-     * @param gameDTO the entity to save
-     * @return the persisted entity
-     */
-    public GameDTO save(GameDTO gameDTO) {
-        log.debug("Request to save Game : {}", gameDTO);
-        Game game = gameMapper.gameDTOToGame(gameDTO);
-        game = gameRepository.save(game);
-        GameDTO result = gameMapper.gameToGameDTO(game);
-        return result;
-    }
+	@Inject
+	private GameMapper gameMapper;
 
-    /**
-     *  Get all the games.
-     *  
-     *  @return the list of entities
-     */
-    public List<GameDTO> findAll() {
-        log.debug("Request to get all Games");
-        List<GameDTO> result = gameRepository.findAll().stream()
-            .map(gameMapper::gameToGameDTO)
-            .collect(Collectors.toCollection(LinkedList::new));
+	/**
+	 * Save a game.
+	 *
+	 * @param gameDTO the entity to save
+	 * @return the persisted entity
+	 */
+	@Override
+	public GameDTO save(GameDTO gameDTO) {
+		this.log.debug("Request to save Game : {}", gameDTO);
+		Game game;
+		if (gameDTO.getId() == null) {
+			game = this.gameMapper.gameDTOToGame(gameDTO);
+		} else {
+			game = this.gameRepository.findOne(gameDTO.getId());
+			this.gameMapper.updateGameFromDto(gameDTO, game);
+		}
+		game = this.gameRepository.save(game);
+		return this.gameMapper.gameToGameDTO(game);
+	}
 
-        return result;
-    }
+	/**
+	 *  Get all the games.
+	 *
+	 *  @return the list of entities
+	 */
+	@Override
+	public List<GameDTO> findAll() {
+		this.log.debug("Request to get all Games");
+		return this.gameRepository.findAll().stream()
+				.map(this.gameMapper::gameToGameDTO)
+				.collect(Collectors.toCollection(LinkedList::new));
 
-    /**
-     *  Get one game by id.
-     *
-     *  @param id the id of the entity
-     *  @return the entity
-     */
-    public GameDTO findOne(String id) {
-        log.debug("Request to get Game : {}", id);
-        Game game = gameRepository.findOne(id);
-        GameDTO gameDTO = gameMapper.gameToGameDTO(game);
-        return gameDTO;
-    }
+	}
 
-    /**
-     *  Delete the  game by id.
-     *
-     *  @param id the id of the entity
-     */
-    public void delete(String id) {
-        log.debug("Request to delete Game : {}", id);
-        gameRepository.delete(id);
-    }
+	/**
+	 *  Get one game by id.
+	 *
+	 *  @param id the id of the entity
+	 *  @return the entity
+	 */
+	@Override
+	public GameDTO findOne(String id) {
+		this.log.debug("Request to get Game : {}", id);
+		Game game = this.gameRepository.findOne(id);
+		return this.gameMapper.gameToGameDTO(game);
+	}
+
+	/**
+	 *  Delete the  game by id.
+	 *
+	 *  @param id the id of the entity
+	 */
+	@Override
+	public void delete(String id) {
+		this.log.debug("Request to delete Game : {}", id);
+		this.gameRepository.delete(id);
+	}
 }
