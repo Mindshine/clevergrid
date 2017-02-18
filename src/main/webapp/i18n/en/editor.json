@@ -1,0 +1,12 @@
+{
+    "clevergridApp": {
+        "game" : {
+            "home": {
+                "title": "Editor"
+            },
+            "create": "Create New Game",
+            "title": "Title",
+            "isPublic": "Is Public"
+        }
+    }
+}

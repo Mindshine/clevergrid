@@ -28,8 +28,8 @@
                                     $translatePartialLoader.addPart('editor');
                                     return $translate.refresh();
                                 } ],
-                        entity : [ '$stateParams', 'Game', function($stateParams, Game) {
-                            return Game.get({
+                        entity : [ '$stateParams', 'Editor', function($stateParams, Editor) {
+                            return Editor.get({
                                 id : $stateParams.id
                             }).$promise;
                         } ]
@@ -55,7 +55,14 @@
                                 function($translate, $translatePartialLoader) {
                                     $translatePartialLoader.addPart('editor');
                                     return $translate.refresh();
-                                } ]
+                                } ],
+                        entity: function () {
+                            return {
+                                title: null,
+                                isPublic: null,
+                                id: null
+                            };
+                        }
                     }
                 });
     }
