@@ -1,11 +1,12 @@
 package com.mindshine.clevergrid.repository;
 
-import com.mindshine.clevergrid.domain.PersistentToken;
-import com.mindshine.clevergrid.domain.User;
 import java.time.LocalDate;
+import java.util.List;
+
 import org.springframework.data.mongodb.repository.MongoRepository;
 
-import java.util.List;
+import com.mindshine.clevergrid.domain.PersistentToken;
+import com.mindshine.clevergrid.domain.User;
 
 /**
  * Spring Data MongoDB repository for the PersistentToken entity.

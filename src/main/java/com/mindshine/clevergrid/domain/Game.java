@@ -1,19 +1,18 @@
 package com.mindshine.clevergrid.domain;
 
+import java.io.Serializable;
+import java.util.Objects;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
-
-import java.io.Serializable;
-import java.time.ZonedDateTime;
-import java.util.Objects;
 
 /**
  * A Game.
  */
 
 @Document(collection = "game")
-public class Game implements Serializable {
+public class Game  extends AbstractAuditingEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -22,18 +21,6 @@ public class Game implements Serializable {
 
     @Field("title")
     private String title;
-
-    @Field("created_date")
-    private ZonedDateTime createdDate;
-
-    @Field("created_by")
-    private String createdBy;
-
-    @Field("last_modified_date")
-    private ZonedDateTime lastModifiedDate;
-
-    @Field("last_modified_by")
-    private String lastModifiedBy;
 
     @Field("is_public")
     private Boolean isPublic;
@@ -57,58 +44,6 @@ public class Game implements Serializable {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public ZonedDateTime getCreatedDate() {
-        return createdDate;
-    }
-
-    public Game createdDate(ZonedDateTime createdDate) {
-        this.createdDate = createdDate;
-        return this;
-    }
-
-    public void setCreatedDate(ZonedDateTime createdDate) {
-        this.createdDate = createdDate;
-    }
-
-    public String getCreatedBy() {
-        return createdBy;
-    }
-
-    public Game createdBy(String createdBy) {
-        this.createdBy = createdBy;
-        return this;
-    }
-
-    public void setCreatedBy(String createdBy) {
-        this.createdBy = createdBy;
-    }
-
-    public ZonedDateTime getLastModifiedDate() {
-        return lastModifiedDate;
-    }
-
-    public Game lastModifiedDate(ZonedDateTime lastModifiedDate) {
-        this.lastModifiedDate = lastModifiedDate;
-        return this;
-    }
-
-    public void setLastModifiedDate(ZonedDateTime lastModifiedDate) {
-        this.lastModifiedDate = lastModifiedDate;
-    }
-
-    public String getLastModifiedBy() {
-        return lastModifiedBy;
-    }
-
-    public Game lastModifiedBy(String lastModifiedBy) {
-        this.lastModifiedBy = lastModifiedBy;
-        return this;
-    }
-
-    public void setLastModifiedBy(String lastModifiedBy) {
-        this.lastModifiedBy = lastModifiedBy;
     }
 
     public Boolean isIsPublic() {
@@ -149,10 +84,6 @@ public class Game implements Serializable {
         return "Game{" +
             "id=" + id +
             ", title='" + title + "'" +
-            ", createdDate='" + createdDate + "'" +
-            ", createdBy='" + createdBy + "'" +
-            ", lastModifiedDate='" + lastModifiedDate + "'" +
-            ", lastModifiedBy='" + lastModifiedBy + "'" +
             ", isPublic='" + isPublic + "'" +
             '}';
     }

@@ -1,18 +1,20 @@
 package com.mindshine.clevergrid.service.impl;
 
-import com.mindshine.clevergrid.service.TopicService;
-import com.mindshine.clevergrid.domain.Topic;
-import com.mindshine.clevergrid.repository.TopicRepository;
-import com.mindshine.clevergrid.service.dto.TopicDTO;
-import com.mindshine.clevergrid.service.mapper.TopicMapper;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import javax.inject.Inject;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import javax.inject.Inject;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.stream.Collectors;
+import com.mindshine.clevergrid.domain.Topic;
+import com.mindshine.clevergrid.repository.TopicRepository;
+import com.mindshine.clevergrid.service.TopicService;
+import com.mindshine.clevergrid.service.dto.TopicDTO;
+import com.mindshine.clevergrid.service.mapper.TopicMapper;
 
 /**
  * Service Implementation for managing Topic.

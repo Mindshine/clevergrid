@@ -1,8 +1,9 @@
 package com.mindshine.clevergrid;
 
-import com.mindshine.clevergrid.config.DefaultProfileUtil;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
+
+import com.mindshine.clevergrid.config.DefaultProfileUtil;
 
 /**
  * This is a helper Java class that provides an alternative to creating a web.xml.

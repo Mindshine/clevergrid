@@ -1,12 +1,12 @@
 package com.mindshine.clevergrid.web.rest.vm;
 
 import java.time.ZonedDateTime;
-
 import java.util.Set;
+
+import javax.validation.constraints.Size;
 
 import com.mindshine.clevergrid.domain.User;
 import com.mindshine.clevergrid.service.dto.UserDTO;
-import javax.validation.constraints.Size;
 
 /**
  * View Model extending the UserDTO, which is meant to be used in the user management UI.

@@ -1,20 +1,27 @@
 package com.mindshine.clevergrid.web.rest;
 
-import com.mindshine.clevergrid.service.AuditEventService;
-import com.mindshine.clevergrid.web.rest.util.PaginationUtil;
-import io.swagger.annotations.ApiParam;
+import java.net.URISyntaxException;
+import java.time.LocalDate;
+import java.util.List;
+
+import javax.inject.Inject;
+
 import org.springframework.boot.actuate.audit.AuditEvent;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-import javax.inject.Inject;
-import java.net.URISyntaxException;
-import java.time.LocalDate;
-import java.util.List;
+import com.mindshine.clevergrid.service.AuditEventService;
+import com.mindshine.clevergrid.web.rest.util.PaginationUtil;
+
+import io.swagger.annotations.ApiParam;
 
 /**
  * REST controller for getting the audit events.

@@ -1,10 +1,9 @@
 package com.mindshine.clevergrid.security.social;
 
-import com.mindshine.clevergrid.config.JHipsterProperties;
+import javax.inject.Inject;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -14,7 +13,7 @@ import org.springframework.social.connect.Connection;
 import org.springframework.social.connect.web.SignInAdapter;
 import org.springframework.web.context.request.NativeWebRequest;
 
-import javax.inject.Inject;
+import com.mindshine.clevergrid.config.JHipsterProperties;
 
 public class CustomSignInAdapter implements SignInAdapter {
 

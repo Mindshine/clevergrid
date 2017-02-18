@@ -1,8 +1,8 @@
 package com.mindshine.clevergrid.repository;
 
-import com.mindshine.clevergrid.domain.Tag;
-
 import org.springframework.data.mongodb.repository.MongoRepository;
+
+import com.mindshine.clevergrid.domain.Tag;
 
 /**
  * Spring Data MongoDB repository for the Tag entity.

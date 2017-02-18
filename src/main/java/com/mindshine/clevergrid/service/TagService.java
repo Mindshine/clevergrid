@@ -1,7 +1,8 @@
 package com.mindshine.clevergrid.service;
 
-import com.mindshine.clevergrid.service.dto.TagDTO;
 import java.util.List;
+
+import com.mindshine.clevergrid.service.dto.TagDTO;
 
 /**
  * Service Interface for managing Tag.

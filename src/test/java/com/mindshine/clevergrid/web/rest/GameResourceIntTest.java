@@ -46,18 +46,6 @@ public class GameResourceIntTest {
     private static final String DEFAULT_TITLE = "AAAAAAAAAA";
     private static final String UPDATED_TITLE = "BBBBBBBBBB";
 
-    private static final ZonedDateTime DEFAULT_CREATED_DATE = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
-    private static final ZonedDateTime UPDATED_CREATED_DATE = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
-
-    private static final String DEFAULT_CREATED_BY = "AAAAAAAAAA";
-    private static final String UPDATED_CREATED_BY = "BBBBBBBBBB";
-
-    private static final ZonedDateTime DEFAULT_LAST_MODIFIED_DATE = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
-    private static final ZonedDateTime UPDATED_LAST_MODIFIED_DATE = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
-
-    private static final String DEFAULT_LAST_MODIFIED_BY = "AAAAAAAAAA";
-    private static final String UPDATED_LAST_MODIFIED_BY = "BBBBBBBBBB";
-
     private static final Boolean DEFAULT_IS_PUBLIC = false;
     private static final Boolean UPDATED_IS_PUBLIC = true;
 
@@ -99,10 +87,6 @@ public class GameResourceIntTest {
     public static Game createEntity() {
         Game game = new Game()
                 .title(DEFAULT_TITLE)
-                .createdDate(DEFAULT_CREATED_DATE)
-                .createdBy(DEFAULT_CREATED_BY)
-                .lastModifiedDate(DEFAULT_LAST_MODIFIED_DATE)
-                .lastModifiedBy(DEFAULT_LAST_MODIFIED_BY)
                 .isPublic(DEFAULT_IS_PUBLIC);
         return game;
     }
@@ -130,10 +114,6 @@ public class GameResourceIntTest {
         assertThat(gameList).hasSize(databaseSizeBeforeCreate + 1);
         Game testGame = gameList.get(gameList.size() - 1);
         assertThat(testGame.getTitle()).isEqualTo(DEFAULT_TITLE);
-        assertThat(testGame.getCreatedDate()).isEqualTo(DEFAULT_CREATED_DATE);
-        assertThat(testGame.getCreatedBy()).isEqualTo(DEFAULT_CREATED_BY);
-        assertThat(testGame.getLastModifiedDate()).isEqualTo(DEFAULT_LAST_MODIFIED_DATE);
-        assertThat(testGame.getLastModifiedBy()).isEqualTo(DEFAULT_LAST_MODIFIED_BY);
         assertThat(testGame.isIsPublic()).isEqualTo(DEFAULT_IS_PUBLIC);
     }
 
@@ -168,10 +148,6 @@ public class GameResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(game.getId())))
             .andExpect(jsonPath("$.[*].title").value(hasItem(DEFAULT_TITLE.toString())))
-            .andExpect(jsonPath("$.[*].createdDate").value(hasItem(sameInstant(DEFAULT_CREATED_DATE))))
-            .andExpect(jsonPath("$.[*].createdBy").value(hasItem(DEFAULT_CREATED_BY.toString())))
-            .andExpect(jsonPath("$.[*].lastModifiedDate").value(hasItem(sameInstant(DEFAULT_LAST_MODIFIED_DATE))))
-            .andExpect(jsonPath("$.[*].lastModifiedBy").value(hasItem(DEFAULT_LAST_MODIFIED_BY.toString())))
             .andExpect(jsonPath("$.[*].isPublic").value(hasItem(DEFAULT_IS_PUBLIC.booleanValue())));
     }
 
@@ -186,10 +162,6 @@ public class GameResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(game.getId()))
             .andExpect(jsonPath("$.title").value(DEFAULT_TITLE.toString()))
-            .andExpect(jsonPath("$.createdDate").value(sameInstant(DEFAULT_CREATED_DATE)))
-            .andExpect(jsonPath("$.createdBy").value(DEFAULT_CREATED_BY.toString()))
-            .andExpect(jsonPath("$.lastModifiedDate").value(sameInstant(DEFAULT_LAST_MODIFIED_DATE)))
-            .andExpect(jsonPath("$.lastModifiedBy").value(DEFAULT_LAST_MODIFIED_BY.toString()))
             .andExpect(jsonPath("$.isPublic").value(DEFAULT_IS_PUBLIC.booleanValue()));
     }
 
@@ -210,10 +182,6 @@ public class GameResourceIntTest {
         Game updatedGame = gameRepository.findOne(game.getId());
         updatedGame
                 .title(UPDATED_TITLE)
-                .createdDate(UPDATED_CREATED_DATE)
-                .createdBy(UPDATED_CREATED_BY)
-                .lastModifiedDate(UPDATED_LAST_MODIFIED_DATE)
-                .lastModifiedBy(UPDATED_LAST_MODIFIED_BY)
                 .isPublic(UPDATED_IS_PUBLIC);
         GameDTO gameDTO = gameMapper.gameToGameDTO(updatedGame);
 
@@ -227,10 +195,6 @@ public class GameResourceIntTest {
         assertThat(gameList).hasSize(databaseSizeBeforeUpdate);
         Game testGame = gameList.get(gameList.size() - 1);
         assertThat(testGame.getTitle()).isEqualTo(UPDATED_TITLE);
-        assertThat(testGame.getCreatedDate()).isEqualTo(UPDATED_CREATED_DATE);
-        assertThat(testGame.getCreatedBy()).isEqualTo(UPDATED_CREATED_BY);
-        assertThat(testGame.getLastModifiedDate()).isEqualTo(UPDATED_LAST_MODIFIED_DATE);
-        assertThat(testGame.getLastModifiedBy()).isEqualTo(UPDATED_LAST_MODIFIED_BY);
         assertThat(testGame.isIsPublic()).isEqualTo(UPDATED_IS_PUBLIC);
     }
 

@@ -1,7 +1,6 @@
 package com.mindshine.clevergrid.config;
 
-import com.mindshine.clevergrid.security.*;
-import com.mindshine.clevergrid.config.JHipsterProperties;
+import javax.inject.Inject;
 
 import org.springframework.beans.factory.BeanInitializationException;
 import org.springframework.context.annotation.Bean;
@@ -14,13 +13,17 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.data.repository.query.SecurityEvaluationContextExtension;
 import org.springframework.security.web.authentication.RememberMeServices;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 
-import javax.inject.Inject;
+import com.mindshine.clevergrid.security.AjaxAuthenticationFailureHandler;
+import com.mindshine.clevergrid.security.AjaxAuthenticationSuccessHandler;
+import com.mindshine.clevergrid.security.AjaxLogoutSuccessHandler;
+import com.mindshine.clevergrid.security.AuthoritiesConstants;
+import com.mindshine.clevergrid.security.Http401UnauthorizedEntryPoint;
 
 @Configuration
 @EnableWebSecurity

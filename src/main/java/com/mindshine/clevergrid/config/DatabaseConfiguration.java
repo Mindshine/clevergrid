@@ -1,16 +1,16 @@
 package com.mindshine.clevergrid.config;
 
-import com.mindshine.clevergrid.domain.util.JSR310DateConverters.*;
-import com.mongodb.Mongo;
-import com.github.mongobee.Mongobee;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration;
 import org.springframework.boot.autoconfigure.mongo.MongoProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
 import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.Profile;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.data.mongodb.config.EnableMongoAuditing;
 import org.springframework.data.mongodb.core.convert.CustomConversions;
@@ -18,9 +18,10 @@ import org.springframework.data.mongodb.core.mapping.event.ValidatingMongoEventL
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
-import javax.inject.Inject;
-import java.util.ArrayList;
-import java.util.List;
+import com.github.mongobee.Mongobee;
+import com.mindshine.clevergrid.domain.util.JSR310DateConverters.DateToZonedDateTimeConverter;
+import com.mindshine.clevergrid.domain.util.JSR310DateConverters.ZonedDateTimeToDateConverter;
+import com.mongodb.Mongo;
 
 @Configuration
 @Profile("!" + Constants.SPRING_PROFILE_CLOUD)

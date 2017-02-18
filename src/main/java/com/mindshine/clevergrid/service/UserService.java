@@ -1,5 +1,20 @@
 package com.mindshine.clevergrid.service;
 
+import java.time.LocalDate;
+import java.time.ZonedDateTime;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+
+import javax.inject.Inject;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+
 import com.mindshine.clevergrid.domain.Authority;
 import com.mindshine.clevergrid.domain.User;
 import com.mindshine.clevergrid.repository.AuthorityRepository;
@@ -9,16 +24,6 @@ import com.mindshine.clevergrid.security.AuthoritiesConstants;
 import com.mindshine.clevergrid.security.SecurityUtils;
 import com.mindshine.clevergrid.service.util.RandomUtil;
 import com.mindshine.clevergrid.web.rest.vm.ManagedUserVM;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Service;
-
-import java.time.LocalDate;
-import java.time.ZonedDateTime;
-import javax.inject.Inject;
-import java.util.*;
 
 /**
  * Service class for managing users.

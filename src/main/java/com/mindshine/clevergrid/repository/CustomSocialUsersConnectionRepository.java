@@ -1,12 +1,16 @@
 package com.mindshine.clevergrid.repository;
 
-import com.mindshine.clevergrid.domain.SocialUserConnection;
-
-import org.springframework.social.connect.*;
-
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
+
+import org.springframework.social.connect.Connection;
+import org.springframework.social.connect.ConnectionFactoryLocator;
+import org.springframework.social.connect.ConnectionKey;
+import org.springframework.social.connect.ConnectionRepository;
+import org.springframework.social.connect.UsersConnectionRepository;
+
+import com.mindshine.clevergrid.domain.SocialUserConnection;
 
 public class CustomSocialUsersConnectionRepository implements UsersConnectionRepository {
 

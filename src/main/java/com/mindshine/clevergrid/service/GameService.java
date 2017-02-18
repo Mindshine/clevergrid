@@ -1,7 +1,8 @@
 package com.mindshine.clevergrid.service;
 
-import com.mindshine.clevergrid.service.dto.GameDTO;
 import java.util.List;
+
+import com.mindshine.clevergrid.service.dto.GameDTO;
 
 /**
  * Service Interface for managing Game.

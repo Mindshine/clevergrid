@@ -1,6 +1,7 @@
 package com.mindshine.clevergrid.config;
 
 import javax.validation.constraints.NotNull;
+
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.web.cors.CorsConfiguration;
 

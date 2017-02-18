@@ -1,10 +1,11 @@
 package com.mindshine.clevergrid.service.mapper;
 
-import com.mindshine.clevergrid.domain.*;
-import com.mindshine.clevergrid.service.dto.TagDTO;
-
-import org.mapstruct.*;
 import java.util.List;
+
+import org.mapstruct.Mapper;
+
+import com.mindshine.clevergrid.domain.Tag;
+import com.mindshine.clevergrid.service.dto.TagDTO;
 
 /**
  * Mapper for the entity Tag and its DTO TagDTO.

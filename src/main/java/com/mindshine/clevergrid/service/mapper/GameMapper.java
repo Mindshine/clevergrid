@@ -1,10 +1,11 @@
 package com.mindshine.clevergrid.service.mapper;
 
-import com.mindshine.clevergrid.domain.*;
-import com.mindshine.clevergrid.service.dto.GameDTO;
-
-import org.mapstruct.*;
 import java.util.List;
+
+import org.mapstruct.Mapper;
+
+import com.mindshine.clevergrid.domain.Game;
+import com.mindshine.clevergrid.service.dto.GameDTO;
 
 /**
  * Mapper for the entity Game and its DTO GameDTO.

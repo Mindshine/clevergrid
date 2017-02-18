@@ -1,14 +1,18 @@
 package com.mindshine.clevergrid.web.rest;
 
-import com.mindshine.clevergrid.config.DefaultProfileUtil;
-import com.mindshine.clevergrid.config.JHipsterProperties;
-import org.springframework.core.env.Environment;
-import org.springframework.web.bind.annotation.*;
-
-import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import javax.inject.Inject;
+
+import org.springframework.core.env.Environment;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.mindshine.clevergrid.config.DefaultProfileUtil;
+import com.mindshine.clevergrid.config.JHipsterProperties;
 
 /**
  * Resource to return information about the currently running Spring profiles.

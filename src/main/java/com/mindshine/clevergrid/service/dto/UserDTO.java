@@ -1,15 +1,16 @@
 package com.mindshine.clevergrid.service.dto;
 
-import com.mindshine.clevergrid.config.Constants;
+import java.util.Set;
+import java.util.stream.Collectors;
 
-import com.mindshine.clevergrid.domain.Authority;
-import com.mindshine.clevergrid.domain.User;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
 
-import javax.validation.constraints.*;
-import java.util.Set;
-import java.util.stream.Collectors;
+import com.mindshine.clevergrid.config.Constants;
+import com.mindshine.clevergrid.domain.Authority;
+import com.mindshine.clevergrid.domain.User;
 
 /**
  * A DTO representing a user, with his authorities.

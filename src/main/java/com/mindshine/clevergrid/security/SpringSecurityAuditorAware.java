@@ -1,9 +1,9 @@
 package com.mindshine.clevergrid.security;
 
-import com.mindshine.clevergrid.config.Constants;
-
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.stereotype.Component;
+
+import com.mindshine.clevergrid.config.Constants;
 
 /**
  * Implementation of AuditorAware based on Spring Security.

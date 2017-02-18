@@ -1,10 +1,11 @@
 package com.mindshine.clevergrid.repository;
 
-import com.mindshine.clevergrid.domain.SocialUserConnection;
-
-import org.springframework.data.mongodb.repository.MongoRepository;
 import java.util.List;
 import java.util.Set;
+
+import org.springframework.data.mongodb.repository.MongoRepository;
+
+import com.mindshine.clevergrid.domain.SocialUserConnection;
 
 /**
  * Spring Data MongoDB repository for the Social User Connection entity.

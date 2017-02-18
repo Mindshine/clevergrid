@@ -1,13 +1,15 @@
 package com.mindshine.clevergrid.service.mapper;
 
-import com.mindshine.clevergrid.domain.Authority;
-import com.mindshine.clevergrid.domain.User;
-import com.mindshine.clevergrid.service.dto.UserDTO;
-import org.mapstruct.*;
-
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
+
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+
+import com.mindshine.clevergrid.domain.Authority;
+import com.mindshine.clevergrid.domain.User;
+import com.mindshine.clevergrid.service.dto.UserDTO;
 
 /**
  * Mapper for the entity User and its DTO UserDTO.

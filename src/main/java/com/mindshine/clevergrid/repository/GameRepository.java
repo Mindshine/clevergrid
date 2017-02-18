@@ -1,8 +1,8 @@
 package com.mindshine.clevergrid.repository;
 
-import com.mindshine.clevergrid.domain.Game;
-
 import org.springframework.data.mongodb.repository.MongoRepository;
+
+import com.mindshine.clevergrid.domain.Game;
 
 /**
  * Spring Data MongoDB repository for the Game entity.

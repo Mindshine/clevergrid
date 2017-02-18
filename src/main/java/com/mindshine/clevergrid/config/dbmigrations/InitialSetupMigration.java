@@ -1,12 +1,14 @@
 package com.mindshine.clevergrid.config.dbmigrations;
 
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
 import com.github.mongobee.changeset.ChangeLog;
 import com.github.mongobee.changeset.ChangeSet;
 import com.mongodb.BasicDBObjectBuilder;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
-
-import java.util.*;
 
 /**
  * Creates the initial database setup
@@ -109,5 +111,14 @@ public class InitialSetupMigration {
                 .get(),
             "user-prov-provusr-idx", true);
     }
-
+    @ChangeSet(author = "initiator", id = "04-addRootCategory", order = "04")
+    public void addRootCategory(DB db){
+    	DBCollection authorityCollection = db.getCollection("category");
+        authorityCollection.insert(
+            BasicDBObjectBuilder.start()
+                .add("_id", "Games")
+                .add("name", "Games")
+                .add("parent", "")
+                .get());
+    }
 }

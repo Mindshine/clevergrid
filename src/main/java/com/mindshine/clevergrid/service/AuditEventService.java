@@ -1,15 +1,17 @@
 package com.mindshine.clevergrid.service;
 
-import com.mindshine.clevergrid.config.audit.AuditEventConverter;
-import com.mindshine.clevergrid.repository.PersistenceAuditEventRepository;
 import java.time.LocalDateTime;
+import java.util.Optional;
+
+import javax.inject.Inject;
+
 import org.springframework.boot.actuate.audit.AuditEvent;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import javax.inject.Inject;
-import java.util.Optional;
+import com.mindshine.clevergrid.config.audit.AuditEventConverter;
+import com.mindshine.clevergrid.repository.PersistenceAuditEventRepository;
 
 /**
  * Service for managing audit events.

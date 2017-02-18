@@ -1,7 +1,8 @@
 package com.mindshine.clevergrid.service;
 
-import com.mindshine.clevergrid.service.dto.TopicDTO;
 import java.util.List;
+
+import com.mindshine.clevergrid.service.dto.TopicDTO;
 
 /**
  * Service Interface for managing Topic.

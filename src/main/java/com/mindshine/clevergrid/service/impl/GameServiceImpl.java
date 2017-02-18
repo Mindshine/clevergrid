@@ -1,18 +1,20 @@
 package com.mindshine.clevergrid.service.impl;
 
-import com.mindshine.clevergrid.service.GameService;
-import com.mindshine.clevergrid.domain.Game;
-import com.mindshine.clevergrid.repository.GameRepository;
-import com.mindshine.clevergrid.service.dto.GameDTO;
-import com.mindshine.clevergrid.service.mapper.GameMapper;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import javax.inject.Inject;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import javax.inject.Inject;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.stream.Collectors;
+import com.mindshine.clevergrid.domain.Game;
+import com.mindshine.clevergrid.repository.GameRepository;
+import com.mindshine.clevergrid.service.GameService;
+import com.mindshine.clevergrid.service.dto.GameDTO;
+import com.mindshine.clevergrid.service.mapper.GameMapper;
 
 /**
  * Service Implementation for managing Game.

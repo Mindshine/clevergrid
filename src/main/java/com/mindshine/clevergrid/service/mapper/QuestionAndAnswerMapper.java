@@ -1,10 +1,11 @@
 package com.mindshine.clevergrid.service.mapper;
 
-import com.mindshine.clevergrid.domain.*;
-import com.mindshine.clevergrid.service.dto.QuestionAndAnswerDTO;
-
-import org.mapstruct.*;
 import java.util.List;
+
+import org.mapstruct.Mapper;
+
+import com.mindshine.clevergrid.domain.QuestionAndAnswer;
+import com.mindshine.clevergrid.service.dto.QuestionAndAnswerDTO;
 
 /**
  * Mapper for the entity QuestionAndAnswer and its DTO QuestionAndAnswerDTO.

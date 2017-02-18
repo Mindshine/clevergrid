@@ -1,18 +1,20 @@
 package com.mindshine.clevergrid.service.impl;
 
-import com.mindshine.clevergrid.service.QuestionAndAnswerService;
-import com.mindshine.clevergrid.domain.QuestionAndAnswer;
-import com.mindshine.clevergrid.repository.QuestionAndAnswerRepository;
-import com.mindshine.clevergrid.service.dto.QuestionAndAnswerDTO;
-import com.mindshine.clevergrid.service.mapper.QuestionAndAnswerMapper;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import javax.inject.Inject;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import javax.inject.Inject;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.stream.Collectors;
+import com.mindshine.clevergrid.domain.QuestionAndAnswer;
+import com.mindshine.clevergrid.repository.QuestionAndAnswerRepository;
+import com.mindshine.clevergrid.service.QuestionAndAnswerService;
+import com.mindshine.clevergrid.service.dto.QuestionAndAnswerDTO;
+import com.mindshine.clevergrid.service.mapper.QuestionAndAnswerMapper;
 
 /**
  * Service Implementation for managing QuestionAndAnswer.

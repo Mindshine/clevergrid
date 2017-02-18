@@ -1,9 +1,11 @@
 package com.mindshine.clevergrid.service;
 
-import com.mindshine.clevergrid.domain.Authority;
-import com.mindshine.clevergrid.domain.User;
-import com.mindshine.clevergrid.repository.AuthorityRepository;
-import com.mindshine.clevergrid.repository.UserRepository;
+import java.util.HashSet;
+import java.util.Locale;
+import java.util.Optional;
+import java.util.Set;
+
+import javax.inject.Inject;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -16,11 +18,10 @@ import org.springframework.social.connect.UserProfile;
 import org.springframework.social.connect.UsersConnectionRepository;
 import org.springframework.stereotype.Service;
 
-import javax.inject.Inject;
-import java.util.HashSet;
-import java.util.Locale;
-import java.util.Optional;
-import java.util.Set;
+import com.mindshine.clevergrid.domain.Authority;
+import com.mindshine.clevergrid.domain.User;
+import com.mindshine.clevergrid.repository.AuthorityRepository;
+import com.mindshine.clevergrid.repository.UserRepository;
 
 @Service
 public class SocialService {

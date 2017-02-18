@@ -1,18 +1,20 @@
 package com.mindshine.clevergrid.service.impl;
 
-import com.mindshine.clevergrid.service.TagService;
-import com.mindshine.clevergrid.domain.Tag;
-import com.mindshine.clevergrid.repository.TagRepository;
-import com.mindshine.clevergrid.service.dto.TagDTO;
-import com.mindshine.clevergrid.service.mapper.TagMapper;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import javax.inject.Inject;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import javax.inject.Inject;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.stream.Collectors;
+import com.mindshine.clevergrid.domain.Tag;
+import com.mindshine.clevergrid.repository.TagRepository;
+import com.mindshine.clevergrid.service.TagService;
+import com.mindshine.clevergrid.service.dto.TagDTO;
+import com.mindshine.clevergrid.service.mapper.TagMapper;
 
 /**
  * Service Implementation for managing Tag.

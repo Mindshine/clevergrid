@@ -1,8 +1,6 @@
 package com.mindshine.clevergrid.config.social;
 
-import com.mindshine.clevergrid.repository.SocialUserConnectionRepository;
-import com.mindshine.clevergrid.repository.CustomSocialUsersConnectionRepository;
-import com.mindshine.clevergrid.security.social.CustomSignInAdapter;
+import javax.inject.Inject;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,7 +24,9 @@ import org.springframework.social.security.AuthenticationNameUserIdSource;
 import org.springframework.social.twitter.connect.TwitterConnectionFactory;
 // jhipster-needle-add-social-connection-factory-import-package
 
-import javax.inject.Inject;
+import com.mindshine.clevergrid.repository.CustomSocialUsersConnectionRepository;
+import com.mindshine.clevergrid.repository.SocialUserConnectionRepository;
+import com.mindshine.clevergrid.security.social.CustomSignInAdapter;
 
 /**
  * Basic Spring Social configuration.

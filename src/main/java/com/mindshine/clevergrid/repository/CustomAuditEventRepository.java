@@ -1,7 +1,12 @@
 package com.mindshine.clevergrid.repository;
 
-import com.mindshine.clevergrid.config.audit.AuditEventConverter;
-import com.mindshine.clevergrid.domain.PersistentAuditEvent;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.Date;
+import java.util.List;
+
+import javax.inject.Inject;
 
 import org.springframework.boot.actuate.audit.AuditEvent;
 import org.springframework.boot.actuate.audit.AuditEventRepository;
@@ -9,12 +14,8 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.inject.Inject;
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.util.Date;
-import java.util.List;
+import com.mindshine.clevergrid.config.audit.AuditEventConverter;
+import com.mindshine.clevergrid.domain.PersistentAuditEvent;
 
 /**
  * An implementation of Spring Boot's AuditEventRepository.

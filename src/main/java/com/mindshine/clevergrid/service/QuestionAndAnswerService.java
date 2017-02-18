@@ -1,7 +1,8 @@
 package com.mindshine.clevergrid.service;
 
-import com.mindshine.clevergrid.service.dto.QuestionAndAnswerDTO;
 import java.util.List;
+
+import com.mindshine.clevergrid.service.dto.QuestionAndAnswerDTO;
 
 /**
  * Service Interface for managing QuestionAndAnswer.

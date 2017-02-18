@@ -1,10 +1,11 @@
 package com.mindshine.clevergrid.service.mapper;
 
-import com.mindshine.clevergrid.domain.*;
-import com.mindshine.clevergrid.service.dto.TopicDTO;
-
-import org.mapstruct.*;
 import java.util.List;
+
+import org.mapstruct.Mapper;
+
+import com.mindshine.clevergrid.domain.Topic;
+import com.mindshine.clevergrid.service.dto.TopicDTO;
 
 /**
  * Mapper for the entity Topic and its DTO TopicDTO.
