@@ -18,6 +18,11 @@
                     templateUrl : 'app/dashboard/dashboard.html',
                     controller : 'DashboardController',
                     controllerAs : 'vm'
+                },
+                'categories@dashboard' : {
+                    templateUrl : 'app/layouts/categories/categories.html',
+                    controller : 'CategoriesController',
+                    controllerAs : 'vm'
                 }
             },
             resolve : {
