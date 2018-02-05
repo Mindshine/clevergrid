@@ -17,6 +17,11 @@
 			<artifactId>clevergrid-ui</artifactId>
 		</dependency>
 
+		<dependency>
+			<groupId>de.flapdoodle.embed</groupId>
+			<artifactId>de.flapdoodle.embed.mongo</artifactId>
+		</dependency>
+
 		<!-- Spring Web -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
