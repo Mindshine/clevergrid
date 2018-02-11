@@ -1,0 +1,60 @@
+<div>
+    <h2>
+        <span jhiTranslate="clevergridApp.topicItem.home.title">Topic Items</span>
+        <button class="btn btn-primary float-right jh-create-entity create-topic-item" [routerLink]="['/', { outlets: { popup: ['topic-item-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="clevergridApp.topicItem.home.createLabel">
+            Create new Topic Item
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="topicItems">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="clevergridApp.topicItem.question">Question</span></th>
+            <th><span jhiTranslate="clevergridApp.topicItem.answer">Answer</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let topicItem of topicItems ;trackBy: trackId">
+                <td><a [routerLink]="['../topic-item', topicItem.id ]">{{topicItem.id}}</a></td>
+                <td>{{topicItem.question}}</td>
+                <td>{{topicItem.answer}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../topic-item', topicItem.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'topic-item/'+ topicItem.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'topic-item/'+ topicItem.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "tagName",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20180210180135",
+    "entityTableName": "tag",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false
+}

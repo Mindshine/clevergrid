@@ -1,0 +1,42 @@
+
+<div *ngIf="quiz">
+    <h2><span jhiTranslate="clevergridApp.quiz.detail.title">Quiz</span> {{quiz.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="clevergridApp.quiz.title">Title</span></dt>
+        <dd>
+            <span>{{quiz.title}}</span>
+        </dd>
+        <dt><span jhiTranslate="clevergridApp.quiz.createdDate">Created Date</span></dt>
+        <dd>
+            <span>{{quiz.createdDate | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="clevergridApp.quiz.createdBy">Created By</span></dt>
+        <dd>
+            <span>{{quiz.createdBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="clevergridApp.quiz.lastModifiedDate">Last Modified Date</span></dt>
+        <dd>
+            <span>{{quiz.lastModifiedDate | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="clevergridApp.quiz.lastModifiedBy">Last Modified By</span></dt>
+        <dd>
+            <span>{{quiz.lastModifiedBy}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'quiz/'+ quiz.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

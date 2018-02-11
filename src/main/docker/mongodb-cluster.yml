@@ -1,0 +1,16 @@
+version: '2'
+services:
+    clevergrid-mongodb:
+        image: mongo:3.4.10
+        ports:
+            - "27017:27017"
+        command: mongos --configdb clevergrid-mongodb-config
+    clevergrid-mongodb-node:
+        build:
+            context: .
+            dockerfile: mongodb/MongoDB.Dockerfile
+        command: mongod --replSet rs1 --noprealloc --smallfiles
+    clevergrid-mongodb-config:
+        image: mongo:3.4.10
+        container_name: clevergrid-mongodb-config
+        command: mongod --noprealloc --smallfiles --configsvr --dbpath /data/db

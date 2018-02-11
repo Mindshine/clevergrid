@@ -1,0 +1,26 @@
+
+{
+    "clevergridApp": {
+        "quiz" : {
+            "home": {
+                "title": "Quizzes",
+                "createLabel": "Створити новий Quiz",
+                "createOrEditLabel": "Створити чи редагувати Quiz"
+            },
+            "created": "Новий Quiz створений з ідентифікатором {{ param }}",
+            "updated": "Quiz оновлений з ідентифікатором {{ param }}",
+            "deleted": "Quiz видалений з ідентифікатором {{ param }}",
+            "delete": {
+                "question": "Ви впевнені, що хочете видалити Quiz {{ id }}?"
+            },
+            "detail": {
+                "title": "Quiz"
+            },
+            "title": "Title",
+            "createdDate": "Created Date",
+            "createdBy": "Created By",
+            "lastModifiedDate": "Last Modified Date",
+            "lastModifiedBy": "Last Modified By"
+        }
+    }
+}

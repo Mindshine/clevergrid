@@ -1,0 +1,23 @@
+entity Quiz {
+    title String,
+    createdDate ZonedDateTime,
+    createdBy String,
+    lastModifiedDate ZonedDateTime,
+    lastModifiedBy String
+}
+
+entity Topic {
+    title String
+}
+
+entity TopicItem {
+    question String,
+    answer String
+}
+
+entity Tag {
+    tagName String
+}
+
+// Set service options
+service all with serviceImpl

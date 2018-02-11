@@ -1,0 +1,30 @@
+
+<div *ngIf="topicItem">
+    <h2><span jhiTranslate="clevergridApp.topicItem.detail.title">Topic Item</span> {{topicItem.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="clevergridApp.topicItem.question">Question</span></dt>
+        <dd>
+            <span>{{topicItem.question}}</span>
+        </dd>
+        <dt><span jhiTranslate="clevergridApp.topicItem.answer">Answer</span></dt>
+        <dd>
+            <span>{{topicItem.answer}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'topic-item/'+ topicItem.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

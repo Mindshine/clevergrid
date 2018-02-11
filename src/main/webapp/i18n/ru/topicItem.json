@@ -1,0 +1,23 @@
+
+{
+    "clevergridApp": {
+        "topicItem" : {
+            "home": {
+                "title": "Topic Items",
+                "createLabel": "Создать новый Topic Item",
+                "createOrEditLabel": "Создать или отредактировать Topic Item"
+            },
+            "created": "Новый Topic Item создан с идентификатором {{ param }}",
+            "updated": "Topic Item обновлен с идентификатором {{ param }}",
+            "deleted": "Topic Item удален с идентификатором {{ param }}",
+            "delete": {
+                "question": "Вы уверены что хотите удалить Topic Item {{ id }}?"
+            },
+            "detail": {
+                "title": "Topic Item"
+            },
+            "question": "Question",
+            "answer": "Answer"
+        }
+    }
+}
